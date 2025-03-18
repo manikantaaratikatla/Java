@@ -77,8 +77,42 @@ public class Arrays {
         else {
         	System.out.println(temp+" is not a palprime.");
         }
-        */
+ */
 		
+		// Min & Max
+		
+/*		
+		        int[] arr = {3, 1, 4, 5, 2}; 
+		        int num = 1;
+		        int min = arr[0];
+		        int max = arr[0];
+
+		        for (int i = 1; i < arr.length; i++) {
+		            if (arr[i] < min) {
+		                min = arr[i];
+		            }
+		            if (arr[i] > max) {
+		                max = arr[i];
+		            }
+		        }
+
+		        
+		        System.out.println("Minimum value in the array: " + min);
+		        System.out.println("Maximum value in the array: " + max);
+*/
+		       /*
+		        if (num == min) {
+		            System.out.println(num + " is the MINIMUM value in the array.");
+		        } else if (num == max) {
+		            System.out.println(num + " is the MAXIMUM value in the array.");
+		        } else {
+		            System.out.println(num + " is neither minimum nor maximum in the array.");
+		        }
+		        */
+		        
+		    
+		
+
 	}
 
 }
