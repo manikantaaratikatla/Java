@@ -3,6 +3,7 @@ import java.util.*;
 public class SamplePrograms {
 
 	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
 		// Even and Odd
 /*
 		 System.out.print("Even numbers: ");
@@ -139,17 +140,33 @@ public class SamplePrograms {
         }
 */
 		
-		//
-		
+		// Factorial 
+
+/*		
  int num=5,factorial=1;
          
          for(int i=1;i<=num;i++) {
         	 factorial=factorial*i;
          }
          System.out.println("Factorial of " +num + " is " + factorial);
-
+*/
 		
-
+ int temp,number,rem;
+ int sum=0;
+ System.out.println("Enter the number: ");
+ number=sc.nextInt();
+ temp=number;
+ while(number>0) {
+	 rem=number%10;
+	 sum=sum*10+rem;
+	 number=number/10;
+ }
+ if(temp==sum) {
+	 System.out.println(temp + " is palindrome");
+ }
+ else {
+	 System.out.println(temp +" is not palindrome");
+ }
 	}
 
 }
