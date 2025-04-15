@@ -8,12 +8,20 @@ public class RestaurantMenu {
     public RestaurantMenu() {
         menu = new HashMap<>();
         menu.put("idli", 30);
-        menu.put("dosa", 40);
-        menu.put("vada", 25);
-        menu.put("poori", 35);
-        menu.put("upma", 28);
-        menu.put("paratha", 45);
-        menu.put("pongal", 38);
+        menu.put("dosa", 50);
+        menu.put("vada", 40);
+        menu.put("poori", 40);
+        menu.put("upma", 40);
+        menu.put("paratha", 50);
+        menu.put("pongal", 60);
+        menu.put("curd rice",50);
+        menu.put("pulihora",80);
+        menu.put("fried rice",100);
+        menu.put("paneer curry",120);
+        menu.put("jeera rice",80);
+        menu.put("veg curry",40);
+        menu.put("sambar rice",80);
+        
     }
 
     public void displayMenu() {
