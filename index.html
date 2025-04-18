@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        var emp1={
+                empId:"TMF1011",
+                firstName:"Antony",
+                lastName:"David",
+                designation:"Manager",
+                empAge:"42",
+                phno:"7698790",
+                email:"lee@gmail.com"
+            };
+            var emp2={
+                empId:"TMF1012",
+                firstName:"Martin",
+                lastName:"Luther",
+                designation:"Lead",
+                phno:"673547879",
+                email:"martin@gmail.com",
+            //     address:{
+            //     dno:"123-123",
+            //     street:"xyz street",
+            //     city:"vizag",
+            //     state:"andhra",
+            //     contry:"India"
+            // }
+            }
+            var empList=[emp1,emp2,"SATYA"];
+            // var addr1={
+            //     dno:"123-123",
+            //     street:"xyz street",
+            //     city:"vizag",
+            //     state:"andhra",
+            //     contry:"India"
+            // }
+    </script>
+    <script>
+        console.log("TEST::TEST");
+
+        function test(a,b,c,d,e,f){
+
+        }
+        
+
+        function doSearch(){
+            
+            console.log("doSearch function has been called");
+            //1.b. fetch the text types/entered by user and store in a variable
+            var empIdSearchTxt= document.getElementById("empId").value;
+            
+            var empAge= document.getElementById("empAge").value;
+            if (!/^\d+$/.test(empAge)) {
+        alert("Please enter a valid numeric age.");
+        return;
+    }
+            empAge=parseInt(empAge,10);
+
+            //2 get all employee id and respective details
+            
+            //3. run a loop to compare and find the matching employee details.
+            // for(i=0;i<empList.length;i++){
+            //    if(empIdSearchTxt == empList[i].empId){
+            //     alert(empList[i].firstName+"::"+empList[i].lastName);
+            //    }
+            //    if(empList[i].empId.includes(empIdSearchTxt)){
+            //     alert(empList[i].firstName+"::"+empList[i].lastName);
+            //    }
+            // }
+
+            for(i=0;i<empList.length;i++){
+                
+                if(empList[i].empAge > empAge){
+                    alert(empList[i].firstName+"::"+empList[i].lastName);
+                }
+                
+            }
+            
+
+          }
+        
+    </script>
+</head>
+
+<body>
+    
+    <h2> Search for an Employee:</h2>
+    <table>
+      <tr>
+        <td style="color:red"><label for="empId">EmpID:</label></td>
+        <td><input type="text" id="empId" name="empId" placeholder="Enter Employee ID" /></td>
+    
+        <td><label for="empDesig">Designation:</label></td>
+        <td><input type="text" id="empDesig" name="empDesig" placeholder="Enter Designation" /></td>
+    
+        <td><label for="empAge">Age:</label></td>
+        <td><input type="text" id="empAge" name="empAge" placeholder="Enter Age" /></td>
+    </tr>
+    
+    <tr>
+        <td><label for="empFirstName">First Name:</label></td>
+        <td><input type="text" id="empFirstName" name="empFirstName" placeholder="Enter First Name" /></td>
+    
+        <td><label for="empLastName">Last Name:</label></td>
+        <td><input type="text" id="empLastName" name="empLastName" placeholder="Enter Last Name" /></td>
+    </tr>
+    
+    <tr>
+        <td><label for="empPhNo">Contact:</label></td>
+        <td><input type="text" id="empPhNo" name="empPhNo" placeholder="Enter Contact Number" /></td>
+    
+        <td><label for="empEmail">Email:</label></td>
+        <td><input type="text" id="empEmail" name="empEmail" placeholder="Enter Email Address" /></td>
+    </tr>
+    
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><button onclick="doSearch()">Search</button></td>
+        </tr>
+    </table>
+    
+    <div id="empListTable">
+
+    </div>
+    <script>
+
+    </script>
+    <!--
+    <table border="1">
+        <tr>
+            <th>Employee ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Designation</th>
+            <th>Contact No</th>
+            <th>Email</th>
+        </tr>
+        <tr>
+            <td>TMF1001</td>
+            <td>SATYANARAYANA</td>
+            <td>NAVARA</td>
+            <td>LEAD </td>
+            <td>98989898989</td>
+            <td>satya@tmf.com</td>
+        </tr>
+        <tr>
+            <td>TMF1002</td>
+            <td>Lee</td>
+            <td>Darvin</td>
+            <td>Manager </td>
+            <td>6767787689</td>
+            <td>lee@tmf.com</td>
+        </tr>
+    </table>
+    -->
+</body>
+<script>
+    //0.create data
+    console.log(empList);
+    //1.a.render the html from JS List obj
+    var tableDiv = document.getElementById("empListTable");
+    var empTable=document.createElement("table");
+    empTable.setAttribute("border","1");
+    
+    // empTable.appendChild(empTr);
+    // tableDiv.appendChild(empTable);
+    for(i=0;i<empList.length;i++){
+        var empTr = document.createElement("tr");
+        var empTempObj = empList[i];
+        var empPropList = Object.keys(empTempObj);
+        for(j=0;j<empPropList.length;j++){
+            var empTd = document.createElement("td");
+            empTd.innerText = empTempObj[empPropList[j]];
+            empTr.appendChild(empTd);
+        }
+        empTable.appendChild(empTr);
+    }
+    tableDiv.appendChild(empTable);
+
+</script>
+</html>
