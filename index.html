@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+         var empList = [
+      { empId: "TMF1011", firstName: "Antony", lastName: "David", designation: "Manager", empAge: "42", phno: "7698790", email: "lee@gmail.com" },
+      { empId: "TMF1012", firstName: "Martin", lastName: "Luther", designation: "Lead", empAge: "35", phno: "673547879", email: "martin@gmail.com" },
+      { empId: "TMF1013", firstName: "Sara", lastName: "Connor", designation: "Developer", empAge: "28", phno: "984537890", email: "sara@gmail.com" },
+      { empId: "TMF1014", firstName: "John", lastName: "Wick", designation: "Tester", empAge: "38", phno: "985657890", email: "john@gmail.com" }
+    ];
+           
+            
+      
+    </script>
+    <script>
+        console.log("TEST::TEST");
+
+       
+        
+
+        function doSearch(){
+            
+            console.log("doSearch function has been called");
+            //1.b. fetch the text types/entered by user and store in a variable
+            
+        
+      var empIdSearchTxt = document.getElementById("empId").value.trim().toLowerCase();
+      var empDesig = document.getElementById("empDesig").value.trim().toLowerCase();
+      var empAge = document.getElementById("empAge").value.trim();
+      var empFirstName = document.getElementById("empFirstName").value.trim().toLowerCase();
+      var empLastName = document.getElementById("empLastName").value.trim().toLowerCase();
+      var empPhNo = document.getElementById("empPhNo").value.trim();
+      var empEmail = document.getElementById("empEmail").value.trim().toLowerCase();
+
+      var resultList = empList.filter(function(emp) {
+        return (
+          (empIdSearchTxt === "" || emp.empId.toLowerCase().includes(empIdSearchTxt)) &&
+          (empDesig === "" || emp.designation.toLowerCase().includes(empDesig)) &&
+          (empAge === "" || emp.empAge === empAge) &&
+          (empFirstName === "" || emp.firstName.toLowerCase().includes(empFirstName)) &&
+          (empLastName === "" || emp.lastName.toLowerCase().includes(empLastName)) &&
+          (empPhNo === "" || emp.phno.includes(empPhNo)) &&
+          (empEmail === "" || emp.email.toLowerCase().includes(empEmail))
+        );
+      });
+
+      renderTable(resultList);
+    
+
+            //2 get all employee id and respective details
+            
+            //3. run a loop to compare and find the matching employee details.
+            // for(i=0;i<empList.length;i++){
+            //    if(empIdSearchTxt == empList[i].empId){
+            //     alert(empList[i].firstName+"::"+empList[i].lastName);
+            //    }
+            //    if(empList[i].empId.includes(empIdSearchTxt)){
+            //     alert(empList[i].firstName+"::"+empList[i].lastName);
+            //    }
+            // }
+
+            
+
+}
+        
+    </script>
+</head>
+
+<body>
+    
+    <h2> Search for an Employee:</h2>
+    <table>
+        <tr>
+            <td><label for="empId">EmpID:</label></td>
+            <td><input type="text" id="empId" /></td>
+            <td><label for="empDesig">Designation:</label></td>
+            <td><input type="text" id="empDesig" /></td>
+            <td><label for="empAge">Age:</label></td>
+            <td><input type="text" id="empAge" /></td>
+          </tr>
+          <tr>
+            <td><label for="empFirstName">First Name:</label></td>
+            <td><input type="text" id="empFirstName" /></td>
+            <td><label for="empLastName">Last Name:</label></td>
+            <td><input type="text" id="empLastName" /></td>
+          </tr>
+          <tr>
+            <td><label for="empPhNo">Contact:</label></td>
+            <td><input type="text" id="empPhNo" /></td>
+            <td><label for="empEmail">Email:</label></td>
+            <td><input type="text" id="empEmail" /></td>
+            
+          </tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><button onclick="doSearch()">Search</button></td>
+        </tr>
+    </table>
+    
+    <div id="empListTable">
+
+    </div>
+    <script>
+
+    </script>
+    <!--
+    <table border="1">
+        <tr>
+            <th>Employee ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Designation</th>
+            <th>Contact No</th>
+            <th>Email</th>
+        </tr>
+        <tr>
+            <td>TMF1001</td>
+            <td>SATYANARAYANA</td>
+            <td>NAVARA</td>
+            <td>LEAD </td>
+            <td>98989898989</td>
+            <td>satya@tmf.com</td>
+        </tr>
+        <tr>
+            <td>TMF1002</td>
+            <td>Lee</td>
+            <td>Darvin</td>
+            <td>Manager </td>
+            <td>6767787689</td>
+            <td>lee@tmf.com</td>
+        </tr>
+    </table>
+    -->
+</body>
+<script>
+    //0.create data
+    console.log(empList);
+    //1.a.render the html from JS List obj
+    function renderTable(list) {
+      var tableDiv = document.getElementById("empListTable");
+      tableDiv.innerHTML = ""; // Clear old results
+
+      if (list.length === 0) {
+        tableDiv.innerHTML = "<p>No matching employees found.</p>";
+        return;
+      }
+
+      var table = document.createElement("table");
+      var headerRow = document.createElement("tr");
+      var headers = ["EmpID", "First Name", "Last Name", "Designation", "Age", "Contact", "Email"];
+
+      headers.forEach(function(header) {
+        var th = document.createElement("th");
+        th.innerText = header;
+        headerRow.appendChild(th);
+      });
+      table.appendChild(headerRow);
+
+      list.forEach(function(emp) {
+        var tr = document.createElement("tr");
+        var fields = [emp.empId, emp.firstName, emp.lastName, emp.designation, emp.empAge, emp.phno, emp.email];
+
+        fields.forEach(function(val) {
+          var td = document.createElement("td");
+          td.innerText = val;
+          tr.appendChild(td);
+        });
+        table.appendChild(tr);
+      });
+
+      tableDiv.appendChild(table);
+    }
+
+</script>
+</html>
